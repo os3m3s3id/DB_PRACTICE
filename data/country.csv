@@ -1,0 +1,32 @@
+country_code,country_name,region
+OM,Oman,Middle East
+IN,India,Asia
+US,United States,North America
+UK,United Kingdom,Europe
+AE,UAE,Middle East
+SA,Saudi Arabia,Middle East
+QA,Qatar,Middle East
+KW,Kuwait,Middle East
+BH,Bahrain,Middle East
+EG,Egypt,Middle East
+JO,Jordan,Middle East
+FR,France,Europe
+DE,Germany,Europe
+IT,Italy,Europe
+ES,Spain,Europe
+NL,Netherlands,Europe
+CN,China,Asia
+JP,Japan,Asia
+SG,Singapore,Asia
+MY,Malaysia,Asia
+TH,Thailand,Asia
+AU,Australia,Oceania
+NZ,New Zealand,Oceania
+ZA,South Africa,Africa
+NG,Nigeria,Africa
+KE,Kenya,Africa
+BR,Brazil,South America
+AR,Argentina,South America
+CL,Chile,South America
+MX,Mexico,North America
+CA,Canada,North America
