@@ -404,3 +404,48 @@ File Path                        PID    Runtime      # DAGs    # Errors  Last Ru
 /opt/airflow/dags/automation.py                           1           0  0.11s           2026-07-28T08:48:58                      10
 ================================================================================
 [2026-07-28T08:49:43.981+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
+[2026-07-28T08:51:36.002+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2026-07-28T08:51:36.003+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
+[2026-07-28T08:51:36.004+0000] {manager.py:485} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-07-28T08:51:36.005+0000] {manager.py:821} INFO - Searching for files in /opt/airflow/dags
+[2026-07-28T08:51:36.023+0000] {manager.py:824} INFO - There are 1 files in /opt/airflow/dags
+[2026-07-28T08:51:36.515+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run      Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  ----------  ----------------------
+/opt/airflow/dags/automation.py    171  0.03s             0           0                                                   0
+================================================================================
+[2026-07-28T08:52:06.880+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/automation.py                           1           0  0.56s           2026-07-28T08:51:37                      43
+================================================================================
+[2026-07-28T08:52:37.899+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/automation.py    184  0.01s             1           0  0.12s           2026-07-28T08:52:07                      10
+================================================================================
+[2026-07-28T08:53:08.325+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/automation.py    189  0.01s             1           0  0.11s           2026-07-28T08:52:37                      10
+================================================================================
+[2026-07-28T08:53:38.751+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+-------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/automation.py    194  0.00s             1           0  0.13s           2026-07-28T08:53:08                      10
+================================================================================
