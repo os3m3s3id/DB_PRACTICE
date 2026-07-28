@@ -1,4 +1,4 @@
 .env
 ppt
-airflow/logs/
+airflow/logs
 airflow/dags/__pycache__
