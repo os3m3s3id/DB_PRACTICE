@@ -83,10 +83,11 @@ services:
     command: scheduler
     restart: unless-stopped
 
-  # Triggered by Airflow's DockerOperator, not started automatically with the rest of the stack
+
+
   dlt_loading:
     build:
-      context: .                  # project root, so both dlt/ and data/ are visible
+      context: .                 
       dockerfile: dlt/Dockerfile
     image: dlt_loading:latest
     container_name: dlt_loading
@@ -98,6 +99,16 @@ services:
       - POSTGRES_USER=myuserdb
       - POSTGRES_PASSWORD=mypassdb
       - POSTGRES_DB=mydbname
+
+  dbt:
+    build:
+      context: ./dbt
+      dockerfile: Dockerfile
+    image: dbt_dwh:latest
+    container_name: dbt_dwh
+    depends_on:
+      - postgres-db
+      - dlt_loading
 
 volumes:
   airflow_db_data:
