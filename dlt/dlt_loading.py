@@ -1,14 +1,18 @@
 import csv
 import dlt
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
+
+DATA_DIR = os.getenv("DATA_DIR", "../data")
+
 # Path defining
-customer_file_path = "data/customer.csv"
-country_file_path = "data/country.csv"
-product_file_path = "data/product.csv"
-sales_transactions_file_path = "data/sales_transactions.csv"
+customer_file_path = os.path.join(DATA_DIR, "customer.csv")
+country_file_path = os.path.join(DATA_DIR, "country.csv")
+product_file_path = os.path.join(DATA_DIR, "product.csv")
+sales_transactions_file_path = os.path.join(DATA_DIR, "sales_transactions.csv")
 
 
 

@@ -1,3 +1,1 @@
-CREATE SCHEMA staging
-
-CREATE USER loader WITH PASSWORD 'dlt-Db';
+CREATE SCHEMA if not EXISTS staging

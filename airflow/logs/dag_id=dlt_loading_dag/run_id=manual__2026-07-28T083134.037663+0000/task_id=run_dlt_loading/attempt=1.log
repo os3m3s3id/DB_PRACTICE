@@ -1,0 +1,230 @@
+[2026-07-28T08:31:34.981+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-07-28T08:31:35.001+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dlt_loading_dag.run_dlt_loading manual__2026-07-28T08:31:34.037663+00:00 [queued]>
+[2026-07-28T08:31:35.011+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dlt_loading_dag.run_dlt_loading manual__2026-07-28T08:31:34.037663+00:00 [queued]>
+[2026-07-28T08:31:35.012+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2026-07-28T08:31:35.026+0000] {taskinstance.py:2890} INFO - Executing <Task(DockerOperator): run_dlt_loading> on 2026-07-28 08:31:34.037663+00:00
+[2026-07-28T08:31:35.034+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dlt_loading_dag', 'run_dlt_loading', 'manual__2026-07-28T08:31:34.037663+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/automation.py', '--cfg-path', '/tmp/tmp9w7rpl3s']
+[2026-07-28T08:31:35.038+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=175) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-07-28T08:31:35.038+0000] {standard_task_runner.py:105} INFO - Job 12: Subtask run_dlt_loading
+[2026-07-28T08:31:35.039+0000] {standard_task_runner.py:72} INFO - Started process 176 to run task
+[2026-07-28T08:31:35.118+0000] {task_command.py:467} INFO - Running <TaskInstance: dlt_loading_dag.run_dlt_loading manual__2026-07-28T08:31:34.037663+00:00 [running]> on host 68a56f374eb7
+[2026-07-28T08:31:35.228+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dlt_loading_dag' AIRFLOW_CTX_TASK_ID='run_dlt_loading' AIRFLOW_CTX_EXECUTION_DATE='2026-07-28T08:31:34.037663+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-07-28T08:31:34.037663+00:00'
+[2026-07-28T08:31:35.230+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2026-07-28T08:31:35.411+0000] {docker.py:345} INFO - Starting docker container from image dlt_loading:latest
+[2026-07-28T08:31:38.685+0000] {docker.py:69} INFO - Traceback (most recent call last):
+[2026-07-28T08:31:38.686+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/pipeline/pipeline.py", line 832, in _sync_destination
+[2026-07-28T08:31:38.687+0000] {docker.py:69} INFO -     remote_state = self._restore_state_from_destination()
+[2026-07-28T08:31:38.688+0000] {docker.py:69} INFO -                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-28T08:31:38.688+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/pipeline/pipeline.py", line 1721, in _restore_state_from_destination
+[2026-07-28T08:31:38.689+0000] {docker.py:69} INFO -     with self._get_destination_clients(schema)[0] as job_client:
+[2026-07-28T08:31:38.690+0000] {docker.py:69} INFO -          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-28T08:31:38.690+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/pipeline/pipeline.py", line 1470, in _get_destination_clients
+[2026-07-28T08:31:38.691+0000] {docker.py:69} INFO -     destination_client, staging_client = get_destination_clients(
+[2026-07-28T08:31:38.692+0000] {docker.py:69} INFO -                                          ^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-28T08:31:38.693+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/dataset/utils.py", line 85, in get_destination_clients
+[2026-07-28T08:31:38.694+0000] {docker.py:69} INFO -     client = destination.client(schema, initial_config)
+[2026-07-28T08:31:38.695+0000] {docker.py:69} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-28T08:31:38.696+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/common/destination/reference.py", line 192, in client
+[2026-07-28T08:31:38.697+0000] {docker.py:69} INFO -     config = self.configuration(initial_config)
+[2026-07-28T08:31:38.698+0000] {docker.py:69} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-28T08:31:38.699+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/common/destination/reference.py", line 179, in configuration
+[2026-07-28T08:31:38.700+0000] {docker.py:69} INFO -     config = resolve_configuration(
+[2026-07-28T08:31:38.700+0000] {docker.py:69} INFO -              ^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-28T08:31:38.701+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/common/configuration/resolve.py", line 91, in resolve_configuration
+[2026-07-28T08:31:38.702+0000] {docker.py:69} INFO -     return _resolve_configuration(config, sections, (), explicit_value, accept_partial)
+[2026-07-28T08:31:38.702+0000] {docker.py:69} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-28T08:31:38.703+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/common/configuration/resolve.py", line 199, in _resolve_configuration
+[2026-07-28T08:31:38.703+0000] {docker.py:69} INFO -     _resolve_config_fields(
+[2026-07-28T08:31:38.704+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/common/configuration/resolve.py", line 385, in _resolve_config_fields
+[2026-07-28T08:31:38.704+0000] {docker.py:69} INFO -     raise ConfigFieldMissingException(config, unresolved_fields)
+[2026-07-28T08:31:38.705+0000] {docker.py:69} INFO - dlt.common.configuration.exceptions.ConfigFieldMissingException: Missing 1 field(s) in configuration `PostgresClientConfiguration`: `credentials`
+[2026-07-28T08:31:38.705+0000] {docker.py:69} INFO - field `credentials` is itself a configuration `PostgresCredentials` with missing field(s): `database`, `password`, `username`, `host`
+[2026-07-28T08:31:38.706+0000] {docker.py:69} INFO -   for field `database` the following (config provider, key) were tried in order:
+[2026-07-28T08:31:38.707+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__POSTGRES__CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.707+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.708+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.708+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__POSTGRES__CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.709+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.709+0000] {docker.py:69} INFO -     (Environment Variables, CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.710+0000] {docker.py:69} INFO -   for field `password` the following (config provider, key) were tried in order:
+[2026-07-28T08:31:38.710+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__POSTGRES__CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.710+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.711+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.712+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__POSTGRES__CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.712+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.713+0000] {docker.py:69} INFO -     (Environment Variables, CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.713+0000] {docker.py:69} INFO -   for field `username` the following (config provider, key) were tried in order:
+[2026-07-28T08:31:38.714+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__POSTGRES__CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.715+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.715+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.716+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__POSTGRES__CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.717+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.717+0000] {docker.py:69} INFO -     (Environment Variables, CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.718+0000] {docker.py:69} INFO -   for field `host` the following (config provider, key) were tried in order:
+[2026-07-28T08:31:38.718+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__POSTGRES__CREDENTIALS__HOST)
+[2026-07-28T08:31:38.719+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__CREDENTIALS__HOST)
+[2026-07-28T08:31:38.719+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__CREDENTIALS__HOST)
+[2026-07-28T08:31:38.720+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__POSTGRES__CREDENTIALS__HOST)
+[2026-07-28T08:31:38.720+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__CREDENTIALS__HOST)
+[2026-07-28T08:31:38.721+0000] {docker.py:69} INFO -     (Environment Variables, CREDENTIALS__HOST)
+[2026-07-28T08:31:38.721+0000] {docker.py:69} INFO - 
+[2026-07-28T08:31:38.721+0000] {docker.py:69} INFO - NOTE: following fields in `PostgresClientConfiguration` got resolved: `csv_format`
+[2026-07-28T08:31:38.722+0000] {docker.py:69} INFO - Provider `secrets.toml` probed but not found the following locations:
+[2026-07-28T08:31:38.722+0000] {docker.py:69} INFO - 	- /app/.dlt/secrets.toml
+[2026-07-28T08:31:38.723+0000] {docker.py:69} INFO - 	- /var/dlt/secrets.toml
+[2026-07-28T08:31:38.723+0000] {docker.py:69} INFO - WARNING: provider `secrets.toml` is empty. Locations (i.e., files) are missing or empty.
+[2026-07-28T08:31:38.724+0000] {docker.py:69} INFO - Provider `config.toml` probed but not found the following locations:
+[2026-07-28T08:31:38.724+0000] {docker.py:69} INFO - 	- /app/.dlt/config.toml
+[2026-07-28T08:31:38.725+0000] {docker.py:69} INFO - 	- /var/dlt/config.toml
+[2026-07-28T08:31:38.725+0000] {docker.py:69} INFO - WARNING: provider `config.toml` is empty. Locations (i.e., files) are missing or empty.
+[2026-07-28T08:31:38.726+0000] {docker.py:69} INFO - 
+[2026-07-28T08:31:38.727+0000] {docker.py:69} INFO - Learn more: https://dlthub.com/docs/general-usage/credentials/
+[2026-07-28T08:31:38.727+0000] {docker.py:69} INFO - 
+[2026-07-28T08:31:38.728+0000] {docker.py:69} INFO - 
+[2026-07-28T08:31:38.728+0000] {docker.py:69} INFO - The above exception was the direct cause of the following exception:
+[2026-07-28T08:31:38.729+0000] {docker.py:69} INFO - 
+[2026-07-28T08:31:38.730+0000] {docker.py:69} INFO - Traceback (most recent call last):
+[2026-07-28T08:31:38.731+0000] {docker.py:69} INFO -   File "/app/dlt_loading.py", line 45, in <module>
+[2026-07-28T08:31:38.731+0000] {docker.py:69} INFO -     customers_load = pipeline.run(
+[2026-07-28T08:31:38.732+0000] {docker.py:69} INFO -                      ^^^^^^^^^^^^^
+[2026-07-28T08:31:38.733+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/pipeline/pipeline.py", line 231, in _wrap
+[2026-07-28T08:31:38.733+0000] {docker.py:69} INFO -     step_info = f(self, *args, **kwargs)
+[2026-07-28T08:31:38.734+0000] {docker.py:69} INFO -                 ^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-28T08:31:38.734+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/pipeline/pipeline.py", line 279, in _wrap
+[2026-07-28T08:31:38.735+0000] {docker.py:69} INFO -     return f(self, *args, **kwargs)
+[2026-07-28T08:31:38.735+0000] {docker.py:69} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-28T08:31:38.736+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/pipeline/pipeline.py", line 757, in run
+[2026-07-28T08:31:38.737+0000] {docker.py:69} INFO -     self._sync_destination(destination, staging, dataset_name)
+[2026-07-28T08:31:38.737+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/pipeline/pipeline.py", line 184, in _wrap
+[2026-07-28T08:31:38.738+0000] {docker.py:69} INFO -     rv = f(self, *args, **kwargs)
+[2026-07-28T08:31:38.738+0000] {docker.py:69} INFO -          ^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-28T08:31:38.739+0000] {docker.py:69} INFO -   File "/usr/local/lib/python3.11/site-packages/dlt/pipeline/pipeline.py", line 938, in _sync_destination
+[2026-07-28T08:31:38.739+0000] {docker.py:69} INFO -     raise PipelineStepFailed(self, "sync", None, ex, None) from ex
+[2026-07-28T08:31:38.740+0000] {docker.py:69} INFO - dlt.pipeline.exceptions.PipelineStepFailed: Pipeline execution failed at `step=sync` with exception:
+[2026-07-28T08:31:38.741+0000] {docker.py:69} INFO - 
+[2026-07-28T08:31:38.741+0000] {docker.py:69} INFO - <class 'dlt.common.configuration.exceptions.ConfigFieldMissingException'>
+[2026-07-28T08:31:38.742+0000] {docker.py:69} INFO - Missing 1 field(s) in configuration `PostgresClientConfiguration`: `credentials`
+[2026-07-28T08:31:38.743+0000] {docker.py:69} INFO - field `credentials` is itself a configuration `PostgresCredentials` with missing field(s): `database`, `password`, `username`, `host`
+[2026-07-28T08:31:38.743+0000] {docker.py:69} INFO -   for field `database` the following (config provider, key) were tried in order:
+[2026-07-28T08:31:38.744+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__POSTGRES__CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.745+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.745+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.746+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__POSTGRES__CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.747+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.748+0000] {docker.py:69} INFO -     (Environment Variables, CREDENTIALS__DATABASE)
+[2026-07-28T08:31:38.748+0000] {docker.py:69} INFO -   for field `password` the following (config provider, key) were tried in order:
+[2026-07-28T08:31:38.749+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__POSTGRES__CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.750+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.750+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.751+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__POSTGRES__CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.752+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.752+0000] {docker.py:69} INFO -     (Environment Variables, CREDENTIALS__PASSWORD)
+[2026-07-28T08:31:38.753+0000] {docker.py:69} INFO -   for field `username` the following (config provider, key) were tried in order:
+[2026-07-28T08:31:38.754+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__POSTGRES__CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.755+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.755+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.756+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__POSTGRES__CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.757+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.757+0000] {docker.py:69} INFO -     (Environment Variables, CREDENTIALS__USERNAME)
+[2026-07-28T08:31:38.758+0000] {docker.py:69} INFO -   for field `host` the following (config provider, key) were tried in order:
+[2026-07-28T08:31:38.759+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__POSTGRES__CREDENTIALS__HOST)
+[2026-07-28T08:31:38.759+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__DESTINATION__CREDENTIALS__HOST)
+[2026-07-28T08:31:38.760+0000] {docker.py:69} INFO -     (Environment Variables, CSV_TO_POSTGRES__CREDENTIALS__HOST)
+[2026-07-28T08:31:38.760+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__POSTGRES__CREDENTIALS__HOST)
+[2026-07-28T08:31:38.761+0000] {docker.py:69} INFO -     (Environment Variables, DESTINATION__CREDENTIALS__HOST)
+[2026-07-28T08:31:38.762+0000] {docker.py:69} INFO -     (Environment Variables, CREDENTIALS__HOST)
+[2026-07-28T08:31:38.762+0000] {docker.py:69} INFO - 
+[2026-07-28T08:31:38.763+0000] {docker.py:69} INFO - NOTE: following fields in `PostgresClientConfiguration` got resolved: `csv_format`
+[2026-07-28T08:31:38.763+0000] {docker.py:69} INFO - Provider `secrets.toml` probed but not found the following locations:
+[2026-07-28T08:31:38.764+0000] {docker.py:69} INFO - 	- /app/.dlt/secrets.toml
+[2026-07-28T08:31:38.765+0000] {docker.py:69} INFO - 	- /var/dlt/secrets.toml
+[2026-07-28T08:31:38.766+0000] {docker.py:69} INFO - WARNING: provider `secrets.toml` is empty. Locations (i.e., files) are missing or empty.
+[2026-07-28T08:31:38.766+0000] {docker.py:69} INFO - Provider `config.toml` probed but not found the following locations:
+[2026-07-28T08:31:38.767+0000] {docker.py:69} INFO - 	- /app/.dlt/config.toml
+[2026-07-28T08:31:38.768+0000] {docker.py:69} INFO - 	- /var/dlt/config.toml
+[2026-07-28T08:31:38.769+0000] {docker.py:69} INFO - WARNING: provider `config.toml` is empty. Locations (i.e., files) are missing or empty.
+[2026-07-28T08:31:38.770+0000] {docker.py:69} INFO - 
+[2026-07-28T08:31:38.770+0000] {docker.py:69} INFO - Learn more: https://dlthub.com/docs/general-usage/credentials/
+[2026-07-28T08:31:39.558+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 485, in execute
+    return self._run_image()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 362, in _run_image
+    return self._run_image_with_mounts(self.mounts, add_tmp_variable=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 419, in _run_image_with_mounts
+    raise DockerContainerFailedException(f"Docker container failed: {result!r}", logs=log_lines)
+airflow.providers.docker.exceptions.DockerContainerFailedException: Docker container failed: {'StatusCode': 1}
+[2026-07-28T08:31:39.567+0000] {taskinstance.py:1226} INFO - Marking task as FAILED. dag_id=dlt_loading_dag, task_id=run_dlt_loading, run_id=manual__2026-07-28T08:31:34.037663+00:00, execution_date=20260728T083134, start_date=20260728T083135, end_date=20260728T083139
+[2026-07-28T08:31:39.622+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2026-07-28T08:31:39.624+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 12 for task run_dlt_loading (Docker container failed: {'StatusCode': 1}; 176)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3006, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 274, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3161, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3185, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 485, in execute
+    return self._run_image()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 362, in _run_image
+    return self._run_image_with_mounts(self.mounts, add_tmp_variable=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 419, in _run_image_with_mounts
+    raise DockerContainerFailedException(f"Docker container failed: {result!r}", logs=log_lines)
+airflow.providers.docker.exceptions.DockerContainerFailedException: Docker container failed: {'StatusCode': 1}
+[2026-07-28T08:31:39.649+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-07-28T08:31:39.678+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-07-28T08:31:39.685+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
