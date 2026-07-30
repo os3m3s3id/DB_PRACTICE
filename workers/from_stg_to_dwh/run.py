@@ -38,7 +38,7 @@ try:
         )
 
 
-        # 2. Adding the country table with the new surrogate key column
+        # 3. Adding the country table with the new surrogate key column
         connection.execute(
             text("""
                 DROP TABLE IF EXISTS dwh.countries_dim;
@@ -50,6 +50,51 @@ try:
         )
 
 
+
+        # 3. Adding the product table with the new surrogate key column
+        connection.execute(
+            text("""
+                DROP TABLE IF EXISTS dwh.products_dim;
+                CREATE TABLE dwh.products_dim AS
+                SELECT * FROM staging.product;
+                ALTER TABLE dwh.products_dim
+                ADD COLUMN product_key SERIAL PRIMARY KEY;
+            """)
+        )
+
+
+
+
+        # 4. Adding the sales_transactions fact table
+        connection.execute(
+            text("""
+                DROP TABLE IF EXISTS dwh.sales_transactions_fact;
+                CREATE TABLE dwh.sales_transactions_fact AS
+                SELECT
+                    st.*,
+                    cu.customer_key,
+                    pr.product_key,
+                    co.country_key
+                FROM staging.sales_transactions st
+                LEFT JOIN dwh.customers_dim cu ON st.customer_id = cu.customer_id
+                LEFT JOIN dwh.products_dim pr ON st.product_id = pr.product_id
+                LEFT JOIN dwh.countries_dim co ON cu.country_code = co.country_code;
+
+                ALTER TABLE dwh.sales_transactions_fact
+                ADD COLUMN sales_trans_key SERIAL PRIMARY KEY;
+
+                ALTER TABLE dwh.sales_transactions_fact
+                ADD CONSTRAINT fk_customer FOREIGN KEY (customer_key) REFERENCES dwh.customers_dim (customer_key);
+
+                ALTER TABLE dwh.sales_transactions_fact
+                ADD CONSTRAINT fk_product FOREIGN KEY (product_key) REFERENCES dwh.products_dim (product_key);
+
+                ALTER TABLE dwh.sales_transactions_fact
+                ADD CONSTRAINT fk_country FOREIGN KEY (country_key) REFERENCES dwh.countries_dim (country_key);
+            """)
+        )
+
+        
 except Exception as error:
     print("Database connection failed:")
     print(error)
