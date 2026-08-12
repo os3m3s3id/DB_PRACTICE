@@ -138,7 +138,7 @@ services:
       context: .
       dockerfile: dlt/Dockerfile
 
-    image: dlt_loading:latest
+    image: dlt_loading
     pull_policy: build
     container_name: dlt_loading
 
@@ -199,6 +199,34 @@ services:
       POSTGRES_USER: myuserdb
       POSTGRES_PASSWORD: mypassdb
       POSTGRES_DB: mydbname
+
+    restart: "no"
+
+
+
+# Image for the SQL analysis script
+  session_3:
+    profiles:
+      - jobs
+
+    build:
+      context: ./workers/session_3
+      dockerfile: Dockerfile
+
+    image: session_3
+    pull_policy: build
+    container_name: session_3_job
+
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+
+    environment:
+      DB_USER: myuserdb
+      DB_PASSWORD: mypassdb
+      DB_HOST: postgres-db
+      DB_PORT: "5432"
+      DB_NAME: mydbname
 
     restart: "no"
 
