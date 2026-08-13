@@ -156,24 +156,24 @@ services:
     restart: "no"
 
 
-  # Image used by a future Airflow DBT task
-  dbt:
-    profiles:
-      - jobs
+  # # Image used by a future Airflow DBT task
+  # dbt:
+  #   profiles:
+  #     - jobs
 
-    build:
-      context: ./dbt
-      dockerfile: Dockerfile
+  #   build:
+  #     context: ./dbt
+  #     dockerfile: Dockerfile
 
-    image: dbt_dwh:latest
-    pull_policy: build
-    container_name: dbt_dwh
+  #   image: dbt_dwh:latest
+  #   pull_policy: build
+  #   container_name: dbt_dwh
 
-    depends_on:
-      postgres-db:
-        condition: service_healthy
+  #   depends_on:
+  #     postgres-db:
+  #       condition: service_healthy
 
-    restart: "no"
+  #   restart: "no"
 
 
   # Image used by the Airflow DockerOperator
@@ -205,17 +205,44 @@ services:
 
 
 # Image for the SQL analysis script
-  session_3:
+  assisment_1:
     profiles:
       - jobs
 
     build:
-      context: ./workers/session_3
+      context: ./workers/session_3/assisment_1
       dockerfile: Dockerfile
 
-    image: session_3
+    image: assisment_1
     pull_policy: build
-    container_name: session_3_job
+    container_name: assisment_1_job
+
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+
+    environment:
+      DB_USER: myuserdb
+      DB_PASSWORD: mypassdb
+      DB_HOST: postgres-db
+      DB_PORT: "5432"
+      DB_NAME: mydbname
+
+    restart: "no"
+
+
+
+  assisment_2:
+    profiles:
+      - jobs
+
+    build:
+      context: ./workers/session_3/assisment_2
+      dockerfile: Dockerfile
+
+    image: assisment_2
+    pull_policy: build
+    container_name: assisment_2_job
 
     depends_on:
       postgres-db:
