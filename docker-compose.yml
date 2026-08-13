@@ -286,6 +286,32 @@ services:
 
 
 
+  assisment_4:
+    profiles:
+      - jobs
+
+    build:
+      context: ./workers/session_3/assisment_4
+      dockerfile: Dockerfile
+
+    image: assisment_4
+    pull_policy: build
+    container_name: assisment_4_job
+
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+
+    environment:
+      DB_USER: myuserdb
+      DB_PASSWORD: mypassdb
+      DB_HOST: postgres-db
+      DB_PORT: "5432"
+      DB_NAME: mydbname
+
+    restart: "no"
+
+
 volumes:
   airflow_db_data:
   postgres_data:
