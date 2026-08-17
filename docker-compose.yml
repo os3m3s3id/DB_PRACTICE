@@ -310,6 +310,59 @@ services:
       DB_NAME: mydbname
 
     restart: "no"
+    
+
+  assisment_1_4:
+    profiles:
+      - jobs
+
+    build:
+      context: ./workers/session_4/assisment_1
+      dockerfile: Dockerfile
+
+    image: assisment_1_4
+    pull_policy: build
+    container_name: assisment_1_4_job
+
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+
+    environment:
+      DB_USER: myuserdb
+      DB_PASSWORD: mypassdb
+      DB_HOST: postgres-db
+      DB_PORT: "5432"
+      DB_NAME: mydbname
+
+    restart: "no"
+
+
+
+  assisment_2_4:
+    profiles:
+      - jobs
+
+    build:
+      context: ./workers/session_4/assisment_2
+      dockerfile: Dockerfile
+
+    image: assisment_2_4
+    pull_policy: build
+    container_name: assisment_2_4_job
+
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+
+    environment:
+      DB_USER: myuserdb
+      DB_PASSWORD: mypassdb
+      DB_HOST: postgres-db
+      DB_PORT: "5432"
+      DB_NAME: mydbname
+
+    restart: "no"
 
 
 volumes:
