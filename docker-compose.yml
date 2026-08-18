@@ -365,6 +365,34 @@ services:
     restart: "no"
 
 
+
+
+  assisment_1_5:
+    profiles:
+      - jobs
+
+    build:
+      context: ./workers/session_5
+      dockerfile: Dockerfile
+
+    image: assisment_1_5
+    pull_policy: build
+    container_name: assisment_1_5_job
+
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+
+    environment:
+      DB_USER: myuserdb
+      DB_PASSWORD: mypassdb
+      DB_HOST: postgres-db
+      DB_PORT: "5432"
+      DB_NAME: mydbname
+
+    restart: "no"
+
+
 volumes:
   airflow_db_data:
   postgres_data:
